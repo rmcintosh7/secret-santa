@@ -8,7 +8,7 @@ import random
 import smtplib
 def make_pairings(names):
     '''
-    Use random generators to determine the secret santa pairings
+    Use random generator to determine the secret santa pairings.
     '''
     num_players = len(names)
     results = []
@@ -23,7 +23,7 @@ def make_pairings(names):
 
 def email_results(from_addr, password, name, email, pairing):
    '''
-   Sends an email to the given address, greeting with the name and enclosing the pairing
+   Sends an email to the given address, greeting with the name and enclosing the pairing. Assumes coordinator uses gmail address.
    '''
    server = smtplib.SMTP('smtp.gmail.com', 587)
    server.ehlo()
@@ -33,15 +33,14 @@ def email_results(from_addr, password, name, email, pairing):
    server.sendmail(from_addr, email, msg)
    server.quit()
 
-#matrix of players: a row is made up of a name, email, and paired name
+#matrix of players: a row is made up of a name, email, and paired name (example names and emails used)
 players = [
-        ["Rachel", "rmcintosh777@gmail.com", ""],
-        ["Emily", "Care.emily.h@gmail.com", ""],
-        ["Akash", "beherakash@gmail.com", ""],
+        ["Nerd", "nerd@email.com", ""],
+        ["Egg", "eggy@address.com", ""],
+        ["Hype", "hypesquad@hotmail.com", ""],
         ]
 #use random number generator to determine the pairings
 make_pairings(players)
-print(players)
 #email out results
 #get coordinator email login credentials
 from_addr = input("Enter the email you would like to send this from: ")
